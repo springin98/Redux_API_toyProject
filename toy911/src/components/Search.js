@@ -5,8 +5,7 @@ import styled from 'styled-components';
 function Search() {
   const [location, setLocation] = useState('');
   const [result, setResult] = useState({});
-  const API_KEY =
-    'zZ06UXTgj%2Bht%2By4RgEZLeQtepG%2BEn%2FDCQ5tAdVJgYYZh7pAJqZ2MIsQaai9FOlsZEqzVsNnWmTdexKGsZUvXyQ%3D%3D';
+  const API_KEY = process.env.REACT_APP_API_KEY;
 
   const url = `https://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=${API_KEY}&itemName=${location}&type=json`;
 
