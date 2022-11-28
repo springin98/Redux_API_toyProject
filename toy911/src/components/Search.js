@@ -32,7 +32,11 @@ function Search() {
     }
   };
 
-  const [modalItem, setModalItem] = useState('');
+  const [modalItemName, setModalItemName] = useState('');
+  const [modalAtpnQesitm, setModalAtpnQesitm] = useState('');
+  const [modalDepositMethodQesitm, setModalDepositMethodQesitm] = useState('');
+  const [modalEfcyQesitm, setModalEfcyQesitm] = useState('');
+  const [modalUseMethodQesitm, setModalUseMethodQesitm] = useState('');
   const [modal, setModal] = useState(false);
   const handleOpen = () => {
     setModal(true);
@@ -64,7 +68,11 @@ function Search() {
           {result.data.body.items.map((item) => (
             <button
               onClick={() => {
-                setModalItem(item.itemName);
+                setModalItemName(item.itemName);
+                setModalAtpnQesitm(item.atpnQesitm);
+                setModalDepositMethodQesitm(item.depositMethodQesitm);
+                setModalEfcyQesitm(item.efcyQesitm);
+                setModalUseMethodQesitm(item.useMethodQesitm);
                 handleOpen();
               }}
               key={item.itemSeq}
@@ -77,7 +85,13 @@ function Search() {
       )}
       {modal && (
         <ModalPortal closePortal={handleClose}>
-          <Modal modalItem={modalItem} API_KEY={API_KEY} />
+          <Modal
+            modalItemName={modalItemName}
+            modalAtpnQesitm={modalAtpnQesitm}
+            modalDepositMethodQesitm={modalDepositMethodQesitm}
+            modalEfcyQesitm={modalEfcyQesitm}
+            modalUseMethodQesitm={modalUseMethodQesitm}
+          />
         </ModalPortal>
       )}
       <div id="root-modal" />
