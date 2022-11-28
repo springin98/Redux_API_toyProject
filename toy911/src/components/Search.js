@@ -80,7 +80,7 @@ function Search() {
       <SearchItemName searchItem={searchItem} />
       <SearchEntpName searchItem={searchItem} />
       <SeachEfcyQesitm searchItem={searchItem} />
-      {Object.keys(result).length !== 0 && (
+      {Object.keys(result).length !== 0 && result.data.body.totalCount !== 0 && (
         <div>
           <div>검색 결과 :{result.data.body.totalCount}</div>
           {result.data.body.items.map((item) => (
@@ -101,6 +101,8 @@ function Search() {
           ))}
         </div>
       )}
+      {Object.keys(result).length !== 0 &&
+        result.data.body.totalCount === 0 && <div>검색 결과 없음</div>}
       {modal && (
         <ModalPortal closePortal={handleClose}>
           <Modal />
