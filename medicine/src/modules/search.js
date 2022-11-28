@@ -1,6 +1,7 @@
 const ITEMNAME = 'search/ITEMNAME';
 const ENTPNAME = 'search/ENTPNAME';
 const EFCYQESITM = 'search/EFCYQESITM';
+const PAGEPLUS = 'search/PAGEPLUS';
 
 export const searchItemName = (name) => ({
   type: ITEMNAME,
@@ -14,11 +15,15 @@ export const searchEfcyQesitm = (efcyqesitm) => ({
   type: EFCYQESITM,
   efcyqesitm: efcyqesitm,
 });
+export const searchPagePlus = () => ({
+  type: PAGEPLUS,
+});
 
 const initialState = {
   Itemname: '',
   EntpName: '',
   Efcyqesitm: '',
+  PageNo: 1,
 };
 
 function search(state = initialState, action) {
@@ -37,6 +42,11 @@ function search(state = initialState, action) {
       return {
         ...state,
         Efcyqesitm: action.efcyqesitm,
+      };
+    case PAGEPLUS:
+      return {
+        ...state,
+        PageNo: state.PageNo + 1,
       };
     default:
       return state;
