@@ -8,13 +8,7 @@ import SeachEfcyQesitm from './SeachEfcyQesitm';
 import Modal from './Modal';
 import ModalPortal from './ModalPortal';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  modalItemName,
-  modalAtpnQesitm,
-  modalDepositMethodQesitm,
-  modalEfcyQesitm,
-  modalUseMethodQesitm,
-} from '../modules/modal';
+import { modalAdd } from '../modules/modal';
 
 function Search() {
   //검색 변수 Redux
@@ -25,6 +19,7 @@ function Search() {
   const numOfRows = '100';
   const [result, setResult] = useState({});
 
+  //API 호출
   const API_KEY = process.env.REACT_APP_API_KEY;
   const url = `https://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=${API_KEY}&type=json&itemName=${itemName}&entpName=${entpName}&efcyQesitm=${efcyQesitm}&numOfRows=${numOfRows}`;
 
@@ -45,28 +40,21 @@ function Search() {
 
   //modal 창 변수 Redux
   const dispatch = useDispatch();
-  const onItemName = useCallback(
-    (name) => dispatch(modalItemName(name)),
-    [dispatch],
-  );
-  const onAtpnQesitm = useCallback(
-    (atpnQesitm) => dispatch(modalAtpnQesitm(atpnQesitm)),
-    [dispatch],
-  );
-  const onDepositMethodQesitm = useCallback(
-    (depositMethodQesitm) =>
-      dispatch(modalDepositMethodQesitm(depositMethodQesitm)),
-    [dispatch],
-  );
-  const onEfcyQesitmName = useCallback(
-    (efcyQesitm) => dispatch(modalEfcyQesitm(efcyQesitm)),
-    [dispatch],
-  );
-  const onUseMethodQesitm = useCallback(
-    (useMethodQesitm) => dispatch(modalUseMethodQesitm(useMethodQesitm)),
+  const onModalAdd = useCallback(
+    (name, atpnQesitm, depositMethodQesitm, efcyQesitm, useMethodQesitm) =>
+      dispatch(
+        modalAdd(
+          name,
+          atpnQesitm,
+          depositMethodQesitm,
+          efcyQesitm,
+          useMethodQesitm,
+        ),
+      ),
     [dispatch],
   );
 
+  //모달창 보이게&사라지게 하기
   const [modal, setModal] = useState(false);
   const handleOpen = () => {
     setModal(true);
@@ -86,11 +74,13 @@ function Search() {
           {result.data.body.items.map((item) => (
             <button
               onClick={() => {
-                onItemName(item.itemName);
-                onAtpnQesitm(item.atpnQesitm);
-                onDepositMethodQesitm(item.depositMethodQesitm);
-                onEfcyQesitmName(item.efcyQesitm);
-                onUseMethodQesitm(item.useMethodQesitm);
+                onModalAdd(
+                  item.itemName,
+                  item.atpnQesitm,
+                  item.depositMethodQesitm,
+                  item.efcyQesitm,
+                  item.useMethodQesitm,
+                );
                 handleOpen();
               }}
               key={item.itemSeq}

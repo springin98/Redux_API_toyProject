@@ -1,27 +1,17 @@
-const MODALITEMNAME = 'modal/ITEMNAME';
-const MODALATPNQESITM = 'modal/MODALATPNQESITM';
-const MODALDEPOSITMETHODQESITM = 'modal/MODALDEPOSITMETHODQESITM';
-const MODALEFCYQESITM = 'modal/MODALEFCYQESITM';
-const MODALUSEMETHODQESITM = 'modal/MODALUSEMETHODQESITM';
+const ADD = 'modal/ADD';
 
-export const modalItemName = (name) => ({
-  type: MODALITEMNAME,
+export const modalAdd = (
+  name,
+  atpnQesitm,
+  depositMethodQesitm,
+  efcyQesitm,
+  useMethodQesitm,
+) => ({
+  type: ADD,
   name: name,
-});
-export const modalAtpnQesitm = (atpnQesitm) => ({
-  type: MODALATPNQESITM,
   atpnQesitm: atpnQesitm,
-});
-export const modalDepositMethodQesitm = (depositMethodQesitm) => ({
-  type: MODALDEPOSITMETHODQESITM,
   depositMethodQesitm: depositMethodQesitm,
-});
-export const modalEfcyQesitm = (efcyQesitm) => ({
-  type: MODALEFCYQESITM,
   efcyQesitm: efcyQesitm,
-});
-export const modalUseMethodQesitm = (useMethodQesitm) => ({
-  type: MODALUSEMETHODQESITM,
   useMethodQesitm: useMethodQesitm,
 });
 
@@ -35,29 +25,13 @@ const initialState = {
 
 function modal(state = initialState, action) {
   switch (action.type) {
-    case MODALITEMNAME:
+    case ADD:
       return {
         ...state,
         Itemname: action.name,
-      };
-    case MODALATPNQESITM:
-      return {
-        ...state,
         AtpnQesitm: action.atpnQesitm,
-      };
-    case MODALDEPOSITMETHODQESITM:
-      return {
-        ...state,
         DepositMethodQesitm: action.depositMethodQesitm,
-      };
-    case MODALEFCYQESITM:
-      return {
-        ...state,
         EfcyQesitm: action.efcyQesitm,
-      };
-    case MODALUSEMETHODQESITM:
-      return {
-        ...state,
         UseMethodQesitm: action.useMethodQesitm,
       };
     default:
