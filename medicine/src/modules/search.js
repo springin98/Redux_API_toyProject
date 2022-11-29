@@ -2,6 +2,8 @@ const ITEMNAME = 'search/ITEMNAME';
 const ENTPNAME = 'search/ENTPNAME';
 const EFCYQESITM = 'search/EFCYQESITM';
 const PAGEPLUS = 'search/PAGEPLUS';
+const PAGEMINUS = 'search/PAGEMINUS';
+const PAGECLEAR = 'search/PAGECLEAR';
 
 export const searchItemName = (name) => ({
   type: ITEMNAME,
@@ -17,6 +19,12 @@ export const searchEfcyQesitm = (efcyqesitm) => ({
 });
 export const searchPagePlus = () => ({
   type: PAGEPLUS,
+});
+export const searchPageMinus = () => ({
+  type: PAGEMINUS,
+});
+export const searchPageClear = () => ({
+  type: PAGECLEAR,
 });
 
 const initialState = {
@@ -47,6 +55,16 @@ function search(state = initialState, action) {
       return {
         ...state,
         PageNo: state.PageNo + 1,
+      };
+    case PAGEMINUS:
+      return {
+        ...state,
+        PageNo: state.PageNo - 1,
+      };
+    case PAGECLEAR:
+      return {
+        ...state,
+        PageNo: 1,
       };
     default:
       return state;

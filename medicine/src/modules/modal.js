@@ -6,6 +6,8 @@ export const modalAdd = (
   depositMethodQesitm,
   efcyQesitm,
   useMethodQesitm,
+  atpnWarnQesitm,
+  intrcQesitm,
 ) => ({
   type: ADD,
   name: name,
@@ -13,6 +15,8 @@ export const modalAdd = (
   depositMethodQesitm: depositMethodQesitm,
   efcyQesitm: efcyQesitm,
   useMethodQesitm: useMethodQesitm,
+  atpnWarnQesitm: atpnWarnQesitm,
+  intrcQesitm: intrcQesitm,
 });
 
 const initialState = {
@@ -21,6 +25,8 @@ const initialState = {
   DepositMethodQesitm: '',
   EfcyQesitm: '',
   UseMethodQesitm: '',
+  AtpnWarnQesitm: '',
+  IntrcQesitm: '',
 };
 
 function modal(state = initialState, action) {
@@ -33,6 +39,8 @@ function modal(state = initialState, action) {
         DepositMethodQesitm: action.depositMethodQesitm,
         EfcyQesitm: action.efcyQesitm,
         UseMethodQesitm: action.useMethodQesitm,
+        AtpnWarnQesitm: action.atpnWarnQesitm,
+        IntrcQesitm: action.intrcQesitm,
       };
     default:
       return state;
