@@ -1,0 +1,143 @@
+$olive: #eaeee3;
+$white: #f5f8f2;
+$olive-light: #ebf2de;
+$olive-lightgray: #e9e9e7;
+$olive-gray: #969992;
+$olive-darkgray: #434441;
+@font-face {
+  font-family: 'gowun';
+  src: url('./fonts/Gowun_Batang/GowunBatang-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'gowun-bold';
+  src: url('./fonts/Gowun_Batang/GowunBatang-Regular.ttf') format('truetype');
+}
+
+* {
+  font-family: 'gowun';
+  font-weight: 700;
+  color: $olive-darkgray;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+button {
+  cursor: pointer;
+}
+input {
+  outline: none;
+}
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.Search_div {
+  padding: 2%;
+  width: 100%;
+  height: 100vh;
+  background-color: $olive;
+}
+.Search_input_div {
+  width: 100%;
+  flex-direction: row;
+}
+.search_input {
+  width: 32%;
+  height: 70px;
+  border: 2px solid $olive-gray;
+  border-radius: 10px;
+  background-color: $white;
+  margin: 1%;
+  padding: 10px;
+  font-size: 20px;
+}
+.search_input::placeholder {
+  color: $olive-gray;
+  font-weight: 600;
+}
+
+.Search_Result_div {
+  margin: 1%;
+}
+.Search_ResultCount {
+  margin-bottom: 1%;
+}
+
+.Search_Result_Btn_div {
+  flex-direction: row;
+  width: 100%;
+}
+.Search_Result_Btn_ul {
+  width: 100%;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  grid-gap: 32px 20px;
+  gap: 32px 20px;
+}
+.Search_Result_Btn_li {
+  width: 19%;
+}
+.Search_Result_Btn {
+  border: 2px solid $olive-gray;
+  border-radius: 10px;
+  background-color: $white;
+  color: $olive-gray;
+  width: 100%;
+  height: 80px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.Search_Result_Name {
+  font-size: 18px;
+  height: 100%;
+  width: 60%;
+  margin: 0.2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+}
+.Search_Result_Entp {
+  font-size: 13px;
+  height: 100%;
+  width: 30%;
+  margin: 0.2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.SearchPage_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1%;
+  height: 100%;
+}
+.SearchPage_p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.SearchPage_Btn {
+  width: 10%;
+  font-size: 30px;
+  background: transparent;
+  border: none;
+}

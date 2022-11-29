@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { searchItemName } from '../modules/search';
+import '../styled/search.scss';
 
 const SearchItemName = (props) => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const SearchItemName = (props) => {
 
   return (
     <input
+      className="search_input"
       placeholder="약품명을 입력하세요"
       onChange={(e) => onItemName(e.target.value)}
       type="text"

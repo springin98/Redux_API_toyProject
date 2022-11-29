@@ -1,0 +1,26 @@
+$olive: #eaeee3;
+$red: rgb(175, 26, 26);
+
+.Modal_div {
+  padding: 5%;
+  width: 100%;
+  border-radius: 50px;
+  background-color: $olive;
+  overflow-y: auto;
+}
+
+.Modal_ItemName {
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Modal_div_div {
+  margin-top: 5%;
+}
+.Modal_Title {
+  font-size: 20px;
+  margin-bottom: 2%;
+  color: $red;
+}

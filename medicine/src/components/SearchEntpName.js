@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
+import '../styled/search.scss';
 import { searchEntpName } from '../modules/search';
 
 const SearchEntpName = (props) => {
@@ -12,6 +13,7 @@ const SearchEntpName = (props) => {
 
   return (
     <input
+      className="search_input"
       placeholder="업체명을 입력하세요"
       onChange={(e) => {
         onEntpName(e.target.value);

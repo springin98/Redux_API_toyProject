@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import '../styled/search.scss';
 
 import SearchEntpName from './SearchEntpName';
 import SearchItemName from './SearchItemName';
@@ -18,7 +19,7 @@ function Search() {
   const entpName = useSelector((state) => state.search.EntpName);
   const efcyQesitm = useSelector((state) => state.search.Efcyqesitm);
 
-  const numOfRows = '100';
+  const numOfRows = '30';
   const [result, setResult] = useState({});
 
   //페이지 이동
@@ -28,6 +29,7 @@ function Search() {
     () => dispatch(searchPageClear()),
     [dispatch],
   );
+
   const [pageNoCount, setPageNoCount] = useState(10);
   useEffect(() => {
     if (pageNo <= pageNoCount) {
@@ -47,7 +49,7 @@ function Search() {
       });
       setResult(data);
       // console.log(data);
-      setPageNoCount(Math.ceil(data.data.body.totalCount / 100));
+      setPageNoCount(Math.ceil(data.data.body.totalCount / numOfRows));
     } catch (err) {
       alert(err);
     }
@@ -92,33 +94,44 @@ function Search() {
   };
 
   return (
-    <div>
-      <SearchItemName searchItem={searchItem} />
-      <SearchEntpName searchItem={searchItem} />
-      <SeachEfcyQesitm searchItem={searchItem} />
+    <div className="Search_div">
+      <div className="Search_input_div">
+        <SearchItemName searchItem={searchItem} />
+        <SearchEntpName searchItem={searchItem} />
+        <SeachEfcyQesitm searchItem={searchItem} />
+      </div>
       {Object.keys(result).length !== 0 && result.data.body.totalCount !== 0 && (
-        <div>
-          <div>검색 결과 :{result.data.body.totalCount}</div>
-          {result.data.body.items.map((item) => (
-            <button
-              onClick={() => {
-                onModalAdd(
-                  item.itemName,
-                  item.atpnQesitm,
-                  item.depositMethodQesitm,
-                  item.efcyQesitm,
-                  item.useMethodQesitm,
-                  item.atpnWarnQesitm,
-                  item.intrcQesitm,
-                );
-                handleOpen();
-              }}
-              key={item.itemSeq}
-            >
-              <div>{item.itemName}</div>
-              <div>{item.entpName}</div>
-            </button>
-          ))}
+        <div className="Search_Result_div">
+          <div className="Search_ResultCount">
+            검색 결과 :{result.data.body.totalCount}
+          </div>
+          <div className="Search_Result_Btn_div">
+            <ul className="Search_Result_Btn_ul">
+              {result.data.body.items.map((item) => (
+                <li className="Search_Result_Btn_li">
+                  <button
+                    key={item.itemSeq}
+                    className="Search_Result_Btn"
+                    onClick={() => {
+                      onModalAdd(
+                        item.itemName,
+                        item.atpnQesitm,
+                        item.depositMethodQesitm,
+                        item.efcyQesitm,
+                        item.useMethodQesitm,
+                        item.atpnWarnQesitm,
+                        item.intrcQesitm,
+                      );
+                      handleOpen();
+                    }}
+                  >
+                    <div className="Search_Result_Name">{item.itemName}</div>
+                    <div className="Search_Result_Entp">{item.entpName}</div>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
           {pageNoCount > 1 && (
             <SearchPage pageNoCount={pageNoCount} pageNo={pageNo} />
           )}
