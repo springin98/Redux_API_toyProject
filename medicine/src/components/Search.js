@@ -38,7 +38,9 @@ function Search() {
   }, [pageNo, pageNoCount]);
 
   //API 호출
-  const API_KEY = process.env.REACT_APP_API_KEY;
+  // const API_KEY = process.env.REACT_APP_API_KEY;
+  const API_KEY =
+    'VTu9mFNHTUOxZyZ%2F%2FtWwD089colths6LyHrcYl0qhzDsJ8ONNSlwFV3e9IBMfTTtMniIReMpZPFT5P7Cplvphg%3D%3D';
   const url = `https://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=${API_KEY}&type=json&itemName=${itemName}&entpName=${entpName}&efcyQesitm=${efcyQesitm}&numOfRows=${numOfRows}&pageNo=${pageNo}`;
 
   const apiGet = async () => {
@@ -48,7 +50,7 @@ function Search() {
         url: url,
       });
       setResult(data);
-      // console.log(data);
+      console.log(data);
       setPageNoCount(Math.ceil(data.data.body.totalCount / numOfRows));
     } catch (err) {
       alert(err);
