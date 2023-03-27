@@ -100,45 +100,46 @@ function Search() {
         <SearchEntpName searchItem={searchItem} />
         <SeachEfcyQesitm searchItem={searchItem} />
       </div>
-      {Object.keys(result).length !== 0 && result.data.body.totalCount !== 0 && (
-        <div className="Search_Result_div">
-          <div className="Search_ResultCount">
-            검색 결과 :{result.data.body.totalCount}
-          </div>
-          <div className="Search_Result_Btn_div">
-            <ul className="Search_Result_Btn_ul">
-              {result.data.body.items.map((item) => (
-                <li className="Search_Result_Btn_li">
-                  <button
-                    key={item.itemSeq}
-                    className="Search_Result_Btn"
-                    onClick={() => {
-                      onModalAdd(
-                        item.itemName,
-                        item.atpnQesitm,
-                        item.depositMethodQesitm,
-                        item.efcyQesitm,
-                        item.useMethodQesitm,
-                        item.atpnWarnQesitm,
-                        item.intrcQesitm,
-                      );
-                      handleOpen();
-                    }}
-                  >
-                    <div className="Search_Result_Name">{item.itemName}</div>
-                    <div className="Search_Result_Entp">{item.entpName}</div>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {pageNoCount > 1 && (
-            <SearchPage pageNoCount={pageNoCount} pageNo={pageNo} />
-          )}
-        </div>
-      )}
       {Object.keys(result).length !== 0 &&
-        result.data.body.totalCount === 0 && <div>검색 결과 없음</div>}
+        result.data.body.totalCount !== undefined && (
+          <div className="Search_Result_div">
+            <div className="Search_ResultCount">
+              검색 결과 :{result.data.body.totalCount}
+            </div>
+            <div className="Search_Result_Btn_div">
+              <ul className="Search_Result_Btn_ul">
+                {result.data.body.items.map((item) => (
+                  <li className="Search_Result_Btn_li">
+                    <button
+                      key={item.itemSeq}
+                      className="Search_Result_Btn"
+                      onClick={() => {
+                        onModalAdd(
+                          item.itemName,
+                          item.atpnQesitm,
+                          item.depositMethodQesitm,
+                          item.efcyQesitm,
+                          item.useMethodQesitm,
+                          item.atpnWarnQesitm,
+                          item.intrcQesitm,
+                        );
+                        handleOpen();
+                      }}
+                    >
+                      <div className="Search_Result_Name">{item.itemName}</div>
+                      <div className="Search_Result_Entp">{item.entpName}</div>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {pageNoCount > 1 && (
+              <SearchPage pageNoCount={pageNoCount} pageNo={pageNo} />
+            )}
+          </div>
+        )}
+      {Object.keys(result).length !== 0 &&
+        result.data.body.totalCount === undefined && <div>검색 결과 없음</div>}
       {modal && (
         <ModalPortal closePortal={handleClose}>
           <Modal />
