@@ -103,7 +103,7 @@ function Search() {
         <SeachEfcyQesitm searchItem={searchItem} />
       </div>
       {Object.keys(result).length !== 0 &&
-        result.data.body.totalCount !== undefined && (
+        result.data.body.totalCount !== 0 && (
           <div className="Search_Result_div">
             <div className="Search_ResultCount">
               검색 결과 :{result.data.body.totalCount}
@@ -141,7 +141,7 @@ function Search() {
           </div>
         )}
       {Object.keys(result).length !== 0 &&
-        result.data.body.totalCount === undefined && <div>검색 결과 없음</div>}
+        result.data.body.totalCount === 0 && <div>검색 결과 없음</div>}
       {modal && (
         <ModalPortal closePortal={handleClose}>
           <Modal />
