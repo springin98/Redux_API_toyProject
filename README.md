@@ -25,3 +25,8 @@
 - 페이지 이동 : 하단의 화살표 클릭 시, 다음 페이지로 
 ![image](https://user-images.githubusercontent.com/114986489/227904940-12d4a1f3-7e71-4ce2-ac8b-1338e55136db.png)
 ![image](https://user-images.githubusercontent.com/114986489/227906330-0c7c4638-b042-406e-a500-8fa3063da66b.png)
+
+## 개선해야 하는 점
+- 모바일 버전으로 만들기
+- 이미지 약품 추가
+- 의약품 뒤에 상세 제목을 한 눈에 볼 수 있도록 
